@@ -111,6 +111,28 @@ This exact limitation is why **RAG** exists:
 - We **retrieve external knowledge**
 - Inject it into the prompt
 - Then let the LLM generate the answer
+## Retrieval-Augmented Generation (RAG)
+
+RAG was developed by combining **two core concepts**:
+
+### 1️⃣ Information Retrieval
+- Fetches **relevant information** from external sources
+- Sources can include:
+  - Documents
+  - PDFs
+  - Databases
+  - Knowledge bases
+- Ensures the model has **up-to-date and accurate data**
+
+### 2️⃣ Text Generation
+- Uses a **Large Language Model (LLM)**
+- Generates a **natural language response**
+- The response is based on:
+  - Retrieved information
+  - User query
+  - Model’s parametric knowledge
+
+📌 **In RAG, retrieval happens first, generation happens second.**
 
 ---
 

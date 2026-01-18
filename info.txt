@@ -8,3 +8,11 @@ Four Most inportant components of RAG
 
 -----------------
 
+Rag was develoed wirh two concept
+1) information retrivel
+2)text generation
+
+
+Query---->
+                  prompt -----> llm-> response
+Context---->
