@@ -1,0 +1,10 @@
+
+
+Four Most inportant components of RAG
+1)Document loader
+2)Text splitter
+3)Vector store
+4)Retrivrs
+
+-----------------
+
