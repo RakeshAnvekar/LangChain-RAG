@@ -101,6 +101,25 @@ There are **two main approaches** to overcome these limitations:
 - Retrain it with **small domain-specific data**
 - The LLM gains **knowledge about your specific domain**
 
+### Disadvantages
+
+1. ❌ **Computationally Expensive**  
+   - Requires significant compute resources (GPUs/TPUs)
+   - Training and retraining increase infrastructure cost
+
+2. ❌ **Requires Strong Technical Expertise**  
+   - Needs deep understanding of:
+     - Model architecture
+     - Training pipelines
+     - Hyperparameter tuning
+   - Debugging and evaluation are complex
+
+3. ❌ **Repeated Tuning for Latest Data**  
+   - Model must be retrained whenever:
+     - New data is added
+     - Information changes
+   - This makes it hard to keep the model always up to date
+
 ---
 
 ### 2️⃣ RAG (Retrieval-Augmented Generation)
