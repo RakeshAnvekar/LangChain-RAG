@@ -177,3 +177,128 @@ RAG was developed by combining **two core concepts**:
 - Parametric knowledge is powerful but limited
 - Prompting works only when knowledge already exists in the model
 - Fine-tuning and RAG help LLMs work with **new, private, and large-scale data**
+
+## RAG Application Workflow
+
+A RAG (Retrieval-Augmented Generation) application typically has **four main steps**:
+
+1. Indexing  
+2. Retrieval  
+3. Augmentation  
+4. Generation
+
+---
+
+## 1️⃣ Indexing
+
+**Indexing** is the process of preparing your **external knowledge base** so that it can be **efficiently searched** later during user queries.
+
+In RAG, we do not store knowledge inside the LLM.  
+Instead, we create an **external knowledge base**, which is done during indexing.
+
+### Why Indexing?
+- To fetch relevant context for a user query
+- To send that context along with the query to the LLM
+- This external knowledge base is used at runtime
+
+### Indexing Steps
+
+#### 1. Document Ingestion
+Load source knowledge into memory.
+
+**Examples of sources:**
+- PDFs
+- Websites
+- YouTube transcripts
+- Git repositories
+
+**Tools:**
+- LangChain Loaders  
+  - `PyPDFLoader`
+  - `WebBaseLoader`
+  - `YoutubeLoader`
+  - `GitLoader`
+
+---
+
+#### 2. Text Chunking
+Break large documents into **small, semantically meaningful chunks**.
+
+**Why chunking is required:**
+- LLMs have a **context limit** (e.g., 4K–32K tokens)
+- Smaller chunks are:
+  - More focused
+  - Better for semantic search
+  - Easier to retrieve accurately
+
+**Tools:**
+- `RecursiveCharacterTextSplitter`
+- `SemanticChunker`
+
+---
+
+#### 3. Embedding Generation
+Convert each text chunk into a **dense vector (embedding)** that represents its meaning.
+
+- Embeddings capture semantic similarity
+- Similar text → similar vectors
+
+**Tools:**
+- OpenAI Embeddings
+- SentenceTransformer Embeddings
+
+---
+
+#### 4. Store in Vector Database
+Store embeddings along with:
+- Chunk text
+- Metadata (source, page number, etc.)
+
+This vector database becomes your **external knowledge base**.
+
+**Vector Stores:**
+- **Local**: FAISS, Chroma  
+- **Cloud**: Pinecone, Qdrant, Milvus
+
+---
+
+## 2️⃣ Retrieval
+
+**Retrieval** is a **real-time process** where the system finds the most relevant information from the indexed knowledge base based on the user’s query.
+
+Goal:
+> From all the knowledge available, find the **top 3–4 chunks** that best answer the query.
+
+### Retrieval Steps
+
+1. Generate an **embedding for the user query**
+   - Use the **same embedding model** used during indexing
+
+2. Search the vector database
+   - Find chunks with highest similarity
+
+3. Rank the retrieved chunks
+   - Based on relevance score
+
+4. Select top results
+   - Extract chunk text/content
+
+## 3️⃣ Augmentation
+
+Augmentation is the step where the system **combines the retrieved context with the user’s query** to form a single prompt.
+
+- Retrieved chunks are inserted into the prompt as **context**
+- The original user question is preserved
+- This ensures the LLM answers **based on external knowledge**, not guesses
+
+**Example:**
+- Prompt = User Query + Retrieved Context
+## 4️⃣ Generation
+
+Generation is the **final step** of the RAG pipeline.
+
+- The augmented prompt is sent to the LLM
+- The LLM uses:
+  - Retrieved context
+  - Its parametric knowledge
+- The model generates a **final natural language response**

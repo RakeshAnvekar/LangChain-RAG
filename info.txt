@@ -8,11 +8,59 @@ Four Most inportant components of RAG
 
 -----------------
 
-Rag was develoed wirh two concept
-1) information retrivel
-2)text generation
+
+Rag application has below steps
+
+1) Indexing
+2)Retrivel
+3) Augmentaon
+4) genaration
 
 
-Query---->
-                  prompt -----> llm-> response
-Context---->
+idexinh: indexng is the process of preparing your knolwege base so that it can cab be eficienty searched fat Query
+
+e nee to send the context with quety , we get thecontent fro the external knoleege base, creatig the external knolee base is indexing.
+
+indexing has some steps:
+  1) document ingestion: ypu load the soure knloeefe into memory.
+     tools: langchainLoaders ( pypdflpader,youtubeloader,webbasedloader,gitloader)
+
+   2) text chunking: break large document into smalll sementically meaningful chunks
+     why chunks:
+     llm have context limit(eg 4k to 32k  tokrns)
+     smaler chunks are more focused->better  sementic search
+ tools: RecursiveCharterTestsplitter,semanticChunker
+    3)  Embeding Genaration
+    convert each chunk into dense vector(embeding) that captures its meaning.
+
+    tools: openai embedding,seteceTransformerEmbedings
+
+    4)storage in vector store store the vector along with chuk text and metadata in vector database
+
+    local: FAISS,CHROMA
+    Cloud: PineCone,Qdrant,Milvus
+    this vecter store is my extarnal knoledge base.
+
+ 2) Retrieval: is the real time process of finding most relevent piece of information from a pre built index (created during indexing) based on the users queston.
+ with query we need to send the context right to llm, to send the context first we need to get most relevent contxt.
+
+ its like : from all the knoldege i have ,which 3 to 4 chunks are most helpful to anser this query.
+
+
+ query------> retriver
+ fstep1: irst retrival generate embedidng for the query, with same embeding model where we used to create  the knoleege base.
+ step 2: search for relevet chunks
+ step3: perfrom ranking on the chunks 
+ step 4:retrive top rsults chunks text or content
+
+ 3) Augmentaon:
+ 
+ hin tis step we combike context and question and form an promt 
+
+ 4)genaration:
+  is the final step where  llm uses promt to generate the response
+
+
+
+
+
