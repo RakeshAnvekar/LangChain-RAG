@@ -300,3 +300,6 @@ Generation is the **final step** of the RAG pipeline.
   - Retrieved context
   - Its parametric knowledge
 - The model generates a **final natural language response**
+
+![rag-la-gi](https://github.com/user-attachments/assets/10ddd938-a218-425b-b3ff-9c7a5323dd1d)
+
