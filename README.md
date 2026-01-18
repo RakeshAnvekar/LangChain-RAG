@@ -1,5 +1,3 @@
-# Parametric Knowledge in LLMs
-
 ## Overview
 LLMs (Large Language Models) store knowledge inside their **parameters (weights)**.
 
