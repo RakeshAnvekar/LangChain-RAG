@@ -123,7 +123,7 @@ There are **two main approaches** to overcome these limitations:
 ---
 ### 2️⃣ In-Context Learning
    - In-Context Learning is a **core capability of Large Language Models** such as **GPT-3/4, Claude, and LLaMA**, where the model learns to solve a task **purely by observing examples provided in the prompt**, **without updating its weights or parameters**.
-   - **Note** In lmm this future became internal part.
+   - **Note** In lmm this future became internal part.(GPT-3)
 ### Simple In-Context Learning Prompt Example (Sentiment Classification)
 
 **Prompt:**
