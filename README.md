@@ -101,9 +101,45 @@ There are **two main approaches** to overcome these limitations:
 - Retrain it with **small domain-specific data**
 - The LLM gains **knowledge about your specific domain**
 
----
+### Disadvantages
 
-### 2️⃣ RAG (Retrieval-Augmented Generation)
+1. ❌ **Computationally Expensive**  
+   - Requires significant compute resources (GPUs/TPUs)
+   - Training and retraining increase infrastructure cost
+
+2. ❌ **Requires Strong Technical Expertise**  
+   - Needs deep understanding of:
+     - Model architecture
+     - Training pipelines
+     - Hyperparameter tuning
+   - Debugging and evaluation are complex
+
+3. ❌ **Repeated Tuning for Latest Data**  
+   - Model must be retrained whenever:
+     - New data is added
+     - Information changes
+   - This makes it hard to keep the model always up to date
+
+---
+### 2️⃣ In-Context Learning
+   - In-Context Learning is a **core capability of Large Language Models** such as **GPT-3/4, Claude, and LLaMA**, where the model learns to solve a task **purely by observing examples provided in the prompt**, **without updating its weights or parameters**.
+   - **Note** In lmm this future became internal part.(GPT-3)
+### Simple In-Context Learning Prompt Example (Sentiment Classification)
+
+**Prompt:**
+
+Classify the sentiment of the text as **Positive** or **Negative**.
+
+Text: I love this phone  
+Sentiment: Positive  
+
+Text: This product is terrible  
+Sentiment: Negative  
+
+Text: The battery life is amazing  
+Sentiment:
+
+### 3️⃣ RAG (Retrieval-Augmented Generation)
 
 This exact limitation is why **RAG** exists:
 
