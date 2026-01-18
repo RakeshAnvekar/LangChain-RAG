@@ -121,8 +121,10 @@ There are **two main approaches** to overcome these limitations:
    - This makes it hard to keep the model always up to date
 
 ---
+### 2️⃣ In-Context Learning
+   - In-Context Learning is a **core capability of Large Language Models** such as **GPT-3/4, Claude, and LLaMA**, where the model learns to solve a task **purely by observing examples provided in the prompt**, **without updating its weights or parameters**.
 
-### 2️⃣ RAG (Retrieval-Augmented Generation)
+### 3️⃣ RAG (Retrieval-Augmented Generation)
 
 This exact limitation is why **RAG** exists:
 
